@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhà ở xứ núi — D'ran, Lâm Đồng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: oklch(96% 0.016 72);
+    --cream-dark: oklch(91% 0.022 72);
+    --brown-deep: oklch(22% 0.04 50);
+    --brown-mid: oklch(38% 0.06 50);
+    --brown-light: oklch(55% 0.07 50);
+    --pine: oklch(32% 0.07 155);
+    --pine-light: oklch(45% 0.09 150);
+    --terra: oklch(54% 0.11 42);
+    --terra-light: oklch(78% 0.08 60);
+    --text: oklch(20% 0.03 50);
+    --text-mid: oklch(42% 0.05 50);
+    --text-light: oklch(62% 0.04 50);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(248, 243, 234, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid oklch(85% 0.02 70);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--cream);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    transition: color 0.4s;
+  }
+  nav.scrolled .nav-logo { color: var(--brown-deep); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover { color: var(--terra); }
+
+  /* HERO */
+  .hero {
+    height: 100vh; min-height: 640px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('uploads/Căn nhà và rừng thông sát bên.png') center/cover no-repeat;
+  }
+  .hero-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(15,10,5,0.15) 0%,
+      rgba(15,10,5,0.1) 40%,
+      rgba(15,10,5,0.65) 100%
+    );
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 64px 72px;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--terra-light);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 500; line-height: 1.05;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .hero-title em { font-style: italic; color: var(--terra-light); }
+  .hero-sub {
+    font-size: 17px; font-weight: 300; line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 40px; max-width: 520px;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--terra);
+    color: #fff;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: oklch(46% 0.11 42); transform: translateY(-1px); }
+  .hero-scroll {
+    position: absolute; bottom: 32px; right: 64px; z-index: 2;
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.6); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hero-scroll::before {
+    content: '';
+    display: block; width: 1px; height: 48px;
+    background: rgba(255,255,255,0.4);
+    animation: scrollline 2s ease-in-out infinite;
+  }
+  @keyframes scrollline {
+    0%, 100% { transform: scaleY(1); opacity: 0.4; }
+    50% { transform: scaleY(0.5); opacity: 1; }
+  }
+
+  /* SECTIONS */
+  section { padding: 96px 0; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terra);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 500; line-height: 1.15;
+    color: var(--brown-deep);
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; color: var(--pine-light); }
+  .section-lead {
+    font-size: 17px; line-height: 1.8; font-weight: 300;
+    color: var(--text-mid); max-width: 600px;
+  }
+
+  /* INTRO */
+  .intro { background: var(--cream); }
+  .intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .intro-image {
+    position: relative; aspect-ratio: 4/5; overflow: hidden;
+  }
+  .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+  .intro-image-accent {
+    position: absolute; bottom: -24px; right: -24px;
+    width: 200px; aspect-ratio: 1;
+    background: var(--pine);
+    z-index: -1;
+  }
+  .intro-text {}
+  .intro-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 20px; line-height: 1.7;
+    color: var(--brown-mid);
+    border-left: 3px solid var(--terra);
+    padding-left: 24px;
+    margin: 32px 0;
+  }
+  .location-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--pine-light);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+  .location-tag:hover { color: var(--terra); }
+
+  /* GALLERY */
+  .gallery-section { background: var(--brown-deep); padding: 80px 0; }
+  .gallery-header {
+    padding: 0 48px 48px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .gallery-header .section-title { color: var(--cream); }
+  .gallery-header .section-lead { color: oklch(75% 0.02 70); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 8px;
+    padding: 0 48px;
+    max-width: 1160px; margin: 0 auto;
+  }
+  .gallery-item { overflow: hidden; cursor: pointer; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gi-1 { grid-column: 1/8; grid-row: 1; aspect-ratio: 7/5; }
+  .gi-2 { grid-column: 8/13; grid-row: 1; aspect-ratio: 5/5; }
+  .gi-3 { grid-column: 1/5; grid-row: 2; aspect-ratio: 4/4; }
+  .gi-4 { grid-column: 5/9; grid-row: 2; aspect-ratio: 4/4; }
+  .gi-5 { grid-column: 9/13; grid-row: 2; aspect-ratio: 4/4; }
+
+  /* SPACES */
+  .spaces { background: var(--cream-dark); }
+  .spaces-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 56px;
+    border: 2px solid var(--cream-dark);
+  }
+  .space-card {
+    background: var(--cream);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .space-card:hover { transform: translateY(-4px); z-index: 1; }
+  .space-card-img { aspect-ratio: 4/3; overflow: hidden; }
+  .space-card-img img { width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s; }
+  .space-card:hover .space-card-img img { transform: scale(1.05); }
+  .space-card-body { padding: 28px; }
+  .space-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 500;
+    color: var(--brown-deep);
+    margin-bottom: 10px;
+  }
+  .space-card-desc {
+    font-size: 14px; line-height: 1.75; color: var(--text-mid);
+  }
+  .space-tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terra); border-bottom: 1px solid var(--terra);
+    padding-bottom: 2px;
+  }
+
+  /* AMENITIES */
+  .amenities { background: var(--cream); }
+  .amenities-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+    margin-top: 56px;
+  }
+  .amenity-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .amenity-list li {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid oklch(88% 0.02 70);
+    font-size: 15px; color: var(--text-mid); font-weight: 400;
+  }
+  .amenity-list li::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--pine-light); flex-shrink: 0;
+  }
+  .amenity-img { aspect-ratio: 1; overflow: hidden; }
+  .amenity-img img { width: 100%; height: 100%; object-fit: cover; }
+  .amenity-note {
+    margin-top: 32px;
+    padding: 24px;
+    background: oklch(91% 0.025 80);
+    border-left: 3px solid var(--terra);
+    font-size: 14px; line-height: 1.8; color: var(--text-mid);
+    font-style: italic;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--pine); }
+  .pricing .section-label { color: var(--terra-light); }
+  .pricing .section-title { color: var(--cream); }
+  .pricing .section-lead { color: oklch(78% 0.03 70); }
+  .pricing-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2px; margin-top: 56px;
+  }
+  .price-card {
+    background: oklch(28% 0.06 155);
+    padding: 48px;
+  }
+  .price-card.accent { background: var(--terra); }
+  .price-card-name {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 500;
+    color: #fff; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-unit {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    margin-bottom: 28px;
+  }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .price-features li {
+    font-size: 14px; color: rgba(255,255,255,0.8);
+    display: flex; gap: 10px; align-items: flex-start;
+    line-height: 1.5;
+  }
+  .price-features li::before {
+    content: '—'; color: rgba(255,255,255,0.4); flex-shrink: 0;
+  }
+  .price-extras {
+    grid-column: 1/-1;
+    background: oklch(25% 0.05 155);
+    padding: 36px 48px;
+    display: flex; gap: 48px; flex-wrap: wrap;
+  }
+  .price-extra-item { flex: 1; min-width: 160px; }
+  .price-extra-item .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+  }
+  .price-extra-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: #fff;
+  }
+  .price-extra-item .desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* TRANSPORT */
+  .transport { background: var(--cream-dark); }
+  .transport-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px; margin-top: 56px;
+  }
+  .transport-card {
+    padding: 32px;
+    background: var(--cream);
+    border-top: 3px solid var(--pine-light);
+  }
+  .transport-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; margin-bottom: 16px;
+    color: var(--brown-deep);
+  }
+  .transport-card p, .transport-card li {
+    font-size: 14px; line-height: 1.75;
+    color: var(--text-mid);
+  }
+  .transport-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .transport-card ul li::before { content: '→ '; color: var(--pine-light); }
+  .transport-note {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid oklch(88% 0.02 70);
+    font-size: 13px; font-style: italic; color: var(--text-light);
+  }
+
+  /* CTA / CONTACT */
+  .contact {
+    background: var(--brown-deep);
+    text-align: center; padding: 120px 48px;
+  }
+  .contact .section-title {
+    color: var(--cream); max-width: 640px; margin: 0 auto 20px;
+  }
+  .contact .section-lead {
+    color: oklch(72% 0.025 70); margin: 0 auto 48px; max-width: 480px;
+  }
+  .contact-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 18px;
+    color: oklch(70% 0.03 70);
+    max-width: 600px; margin: 0 auto 48px;
+    line-height: 1.8;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 14px 36px;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--terra); color: var(--terra); }
+
+  /* FOOTER */
+  footer {
+    background: oklch(16% 0.03 50);
+    padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: oklch(50% 0.02 50);
+  }
+  footer .logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 16px;
+    color: oklch(65% 0.03 70);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(10,8,5,0.96);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 90vh;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: fixed; top: 24px; right: 32px;
+    color: rgba(255,255,255,0.6); font-size: 32px;
+    cursor: pointer; background: none; border: none;
+    font-family: sans-serif; line-height: 1;
+  }
+  .lightbox-close:hover { color: #fff; }
+
+  /* TWEAKS */
+  #tweaks-panel {
+    display: none; position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: var(--cream); border: 1px solid oklch(82% 0.025 70);
+    padding: 24px; width: 280px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  }
+  #tweaks-panel h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; margin-bottom: 20px;
+    color: var(--brown-deep);
+  }
+  .tweak-row { margin-bottom: 16px; }
+  .tweak-row label {
+    display: block; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-light); margin-bottom: 8px;
+  }
+  .tweak-row select, .tweak-row input[type=range] {
+    width: 100%; font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px; padding: 8px;
+    border: 1px solid oklch(82% 0.025 70);
+    background: var(--cream); color: var(--text);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px 56px; }
+    .container { padding: 0 24px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+    .intro-image { aspect-ratio: 16/9; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; padding: 0 24px; }
+    .gi-1 { grid-column: 1/3; grid-row: 1; }
+    .gi-2 { grid-column: 1/3; grid-row: 2; }
+    .gi-3 { grid-column: 1/2; grid-row: 3; }
+    .gi-4 { grid-column: 2/3; grid-row: 3; }
+    .gi-5 { grid-column: 1/3; grid-row: 4; }
+    .spaces-grid { grid-template-columns: 1fr; }
+    .amenities-layout { grid-template-columns: 1fr; gap: 40px; }
+    .pricing-cards { grid-template-columns: 1fr; }
+    .price-extras { grid-column: auto; flex-direction: column; gap: 24px; }
+    .transport-grid { grid-template-columns: 1fr; }
+    .gallery-header { padding: 0 24px 40px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Nhà ở xứ núi</div>
+  <ul class="nav-links">
+    <li><a href="#spaces">Không gian</a></li>
+    <li><a href="#amenities">Tiện ích</a></li>
+    <li><a href="#pricing">Giá</a></li>
+    <li><a href="#transport">Di chuyển</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Đồi Kalkill · D'ran · Lâm Đồng</div>
+    <h1 class="hero-title">Nhà ở<br><em>xứ núi</em></h1>
+    <p class="hero-sub">Một ngôi nhà gỗ nhỏ giữa rừng thông, nơi bạn có thể thực sự nghỉ ngơi — hay làm việc từ xa với view rừng mỗi sáng.</p>
+    <a href="#spaces" class="btn-primary">Khám phá không gian</a>
+  </div>
+  <div class="hero-scroll">Cuộn xuống</div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-image">
+        <img src="uploads/View từ trong lều nhìn ra ngoài.png" alt="View từ trong lều nhìn ra ngoài" loading="lazy">
+        <div class="intro-image-accent"></div>
+      </div>
+      <div class="intro-text">
+        <div class="section-label">Về ngôi nhà</div>
+        <h2 class="section-title">Không gian <em>gần gũi,</em><br>chân thành</h2>
+        <blockquote class="intro-quote">
+          "Tụi mình mong muốn Nhà ở xứ núi sẽ mang lại cảm giác như qua nhà anh em bạn bè chơi, thoải mái và chân thành."
+        </blockquote>
+        <p class="section-lead" style="font-size:15px; margin-bottom:24px;">
+          Nhà chỉ nhận tối đa 4 khách mỗi lần, để mọi kết nối được trọn vẹn. Phòng có view ra rừng thông, bàn làm việc cho những ai cần làm remote, và không gian xung quanh yên tĩnh với nhiều khu vực để đi dạo, chạy trail, nối đất, off-road.
+        </p>
+        <a href="https://maps.app.goo.gl/" class="location-tag" target="_blank">
+          📍 Đồi Kalkill, thị trấn D'ran, huyện Đơn Dương, Lâm Đồng
+        </a>
+        <p style="margin-top:12px; font-size:13px; color:var(--text-light);">Cách Đà Lạt khoảng 40km · Cách chợ 10 phút xe máy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-header">
+    <div class="section-label" style="color:var(--terra-light)">Hình ảnh</div>
+    <h2 class="section-title">Một ngày tại<br><em>xứ núi</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item gi-1" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="uploads/Phòng ngủ.png" alt="Phòng ngủ" loading="lazy">
+    </div>
+    <div class="gallery-item gi-2" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="uploads/bàn phòng ngủ.png" alt="Bàn phòng ngủ" loading="lazy">
+    </div>
+    <div class="gallery-item gi-3" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="uploads/Ghế sofa.png" alt="Ghế sofa" loading="lazy">
+    </div>
+    <div class="gallery-item gi-4" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="uploads/Bếp.png" alt="Bếp" loading="lazy">
+    </div>
+    <div class="gallery-item gi-5" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="uploads/Phí ngoài lều.png" alt="Khu lều" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- SPACES -->
+<section class="spaces" id="spaces">
+  <div class="container">
+    <div class="section-label">Lựa chọn lưu trú</div>
+    <h2 class="section-title">Không gian <em>của bạn</em></h2>
+    <div class="spaces-grid">
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="uploads/Phòng ngủ.png" alt="Phòng ngủ" loading="lazy">
+        </div>
+        <div class="space-card-body">
+          <div class="space-card-title">Phòng ngủ trong nhà</div>
+          <p class="space-card-desc">Phòng với tường gỗ thông, giường đôi ấm áp, tủ đồ rộng rãi và cửa sổ nhìn ra rừng thông xanh mát. Phù hợp cho 1–2 người.</p>
+          <span class="space-tag">Tối đa 2 người</span>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="uploads/View từ trong lều nhìn ra ngoài.png" alt="View từ lều" loading="lazy">
+        </div>
+        <div class="space-card-body">
+          <div class="space-card-title">Lều ngoài trời</div>
+          <p class="space-card-desc">Ngủ trong lều dưới mái che, thức dậy với ánh bình minh trên núi và tiếng gió rừng. Được sắp xếp thêm khi nhóm 3–4 người.</p>
+          <span class="space-tag">Cho nhóm 3–4 người</span>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="uploads/Ghế sofa.png" alt="Phòng chung" loading="lazy">
+        </div>
+        <div class="space-card-body">
+          <div class="space-card-title">Phòng chung & Bếp</div>
+          <p class="space-card-desc">Khu vực sinh hoạt chung với sofa, tủ sách, bếp đầy đủ tiện nghi và khu vườn rau nhỏ ngay cạnh cửa sổ. Không gian làm việc remote thoải mái.</p>
+          <span class="space-tag">Dùng chung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="container">
+    <div class="section-label">Tiện ích</div>
+    <h2 class="section-title">Đầy đủ để <em>thư giãn</em></h2>
+    <div class="amenities-layout">
+      <div>
+        <ul class="amenity-list">
+          <li>Wifi tốc độ cao (làm việc remote thoải mái)</li>
+          <li>Nước nóng</li>
+          <li>Máy giặt & máy sấy</li>
+          <li>Tủ lạnh</li>
+          <li>Nhà vệ sinh chung</li>
+          <li>Bếp đầy đủ dụng cụ nấu ăn</li>
+          <li>Vườn rau nhỏ của chủ nhà</li>
+          <li>Sân ngoài trời để đi dạo & nối đất</li>
+          <li>Rừng thông ngay sát nhà</li>
+        </ul>
+        <div class="amenity-note">
+          Vật dụng cá nhân (khăn tắm, bàn chải, sữa tắm) mọi người tự chuẩn bị để tránh lãng phí và phù hợp nhu cầu từng người nhé.
+        </div>
+      </div>
+      <div>
+        <div class="amenity-img">
+          <img src="uploads/Bếp.png" alt="Bếp" loading="lazy">
+        </div>
+        <div style="margin-top:8px;">
+          <div class="amenity-img" style="aspect-ratio:16/9;">
+            <img src="uploads/Căn nhà và rừng thông sát bên.png" alt="Rừng thông" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label">Giá lưu trú</div>
+    <h2 class="section-title">Đơn giản &<br><em>minh bạch</em></h2>
+    <p class="section-lead">Không phụ thu, không phức tạp.</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="price-card-name">Phòng ngủ trong nhà</div>
+        <div class="price-amount">400.000₫</div>
+        <div class="price-unit">mỗi ngày / tối đa 2 người</div>
+        <ul class="price-features">
+          <li>Phòng ngủ riêng tư với giường đôi</li>
+          <li>View rừng thông từ cửa sổ</li>
+          <li>Bàn làm việc cho remote work</li>
+          <li>Dùng chung bếp, phòng khách, nhà tắm</li>
+          <li>Wifi, máy giặt, tủ lạnh, nước nóng</li>
+        </ul>
+      </div>
+      <div class="price-card accent">
+        <div class="price-card-name">Lều ngoài trời</div>
+        <div class="price-amount">200.000₫</div>
+        <div class="price-unit">mỗi ngày / người</div>
+        <ul class="price-features">
+          <li>Được sắp xếp thêm khi nhóm 3–4 người</li>
+          <li>Có mái che, nằm dưới trời sao</li>
+          <li>View bình minh trên núi</li>
+          <li>Dùng chung toàn bộ tiện nghi trong nhà</li>
+          <li>Trải nghiệm camping gần gũi thiên nhiên</li>
+        </ul>
+      </div>
+      <div class="price-extras">
+        <div class="price-extra-item">
+          <div class="label">Đưa đón bến ↔ nhà</div>
+          <div class="value">50.000₫</div>
+          <div class="desc">mỗi người · gồm 2 chiều</div>
+        </div>
+        <div class="price-extra-item">
+          <div class="label">Xe số thuê</div>
+          <div class="value">100.000₫</div>
+          <div class="desc">mỗi ngày</div>
+        </div>
+        <div class="price-extra-item">
+          <div class="label">Xe tay ga thuê</div>
+          <div class="value">120.000₫</div>
+          <div class="desc">mỗi ngày</div>
+        </div>
+        <div class="price-extra-item">
+          <div class="label">Ăn uống</div>
+          <div class="value">Share tiền</div>
+          <div class="desc">nếu ăn chung với chủ nhà</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section class="transport" id="transport">
+  <div class="container">
+    <div class="section-label">Di chuyển</div>
+    <h2 class="section-title">Đường đến <em>xứ núi</em></h2>
+    <p class="section-lead">Có thể đến bằng xe khách từ nhiều nơi. Nhắn tin để được hỗ trợ thêm.</p>
+    <div class="transport-grid">
+      <div class="transport-card">
+        <h3>Từ Sài Gòn</h3>
+        <ul>
+          <li>Nhà xe Như Vinh</li>
+          <li>Nhà xe Hồng Ân</li>
+          <li>Nhà xe Long Ái</li>
+          <li>Nhà xe Phương Trang</li>
+        </ul>
+        <div class="transport-note">
+          Xe Như Vinh, Hồng Ân, Long Ái: dừng ở <strong>cổng Hòa Bình</strong>.<br>
+          Xe Phương Trang: dừng ở <strong>đầu thôn Kalkill hoặc bến D'ran</strong>.
+        </div>
+      </div>
+      <div class="transport-card">
+        <h3>Từ Đà Lạt</h3>
+        <ul>
+          <li>Xe buýt Phương Trang</li>
+        </ul>
+        <div class="transport-note">
+          Dừng ở <strong>bến D'ran</strong>. Nhắn tin để được đưa đón từ bến về nhà (50k/người, 2 chiều).
+        </div>
+        <div style="margin-top:20px;">
+          <h3>Từ nơi khác</h3>
+          <p>Nhắn tin cho tụi mình biết bạn xuất phát từ đâu — tụi mình sẽ hỗ trợ tìm xe và tuyến đường phù hợp. Tuyến lớn ở D'ran có nhiều xe đi miền Trung thẳng nên cũng rất tiện.</p>
+        </div>
+      </div>
+      <div class="transport-card">
+        <h3>Vị trí</h3>
+        <p style="margin-bottom:16px;">Đồi Kalkill, thị trấn D'ran, huyện Đơn Dương, tỉnh Lâm Đồng.</p>
+        <p style="margin-bottom:16px; font-size:13px; color:var(--text-light);">
+          Cách Đà Lạt ~40km · Cách chợ / Bách Hoá Xanh 10 phút xe máy. Trong đồi Kalkill vẫn có tiệm tạp hóa bán đồ ăn sáng và rau củ nếu lười đi ra chợ.
+        </p>
+        <a href="https://maps.google.com" target="_blank" class="location-tag">
+          📍 Xem vị trí trên bản đồ
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section class="contact" id="contact">
+  <div class="section-label" style="color:var(--terra-light)">Liên hệ đặt phòng</div>
+  <h2 class="section-title">Sẵn sàng đến<br><em>xứ núi?</em></h2>
+  <div class="contact-quote">
+    "Với số lượng khách không nhiều mỗi lần, hi vọng mọi kết nối sẽ trọn vẹn và dễ chịu khi mọi người ở đây."
+  </div>
+  <p class="section-lead">
+    Nhắn tin để hỏi về lịch trống, đặt phòng, hoặc bất kỳ điều gì bạn muốn biết trước khi đến.
+  </p>
+  <a href="https://m.me/" class="btn-primary" style="margin-right:16px;">Nhắn tin đặt phòng</a>
+  <a href="#intro" class="btn-outline">Xem lại không gian</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Nhà ở xứ núi</div>
+  <div>Đồi Kalkill · D'ran · Lâm Đồng · Việt Nam</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <h4>Tweaks</h4>
+  <div class="tweak-row">
+    <label>Màu sắc chủ đạo</label>
+    <select onchange="applyColorScheme(this.value)">
+      <option value="warm">Ấm (Nâu-Đất)</option>
+      <option value="forest">Rừng (Xanh Thông)</option>
+      <option value="dusk">Hoàng Hôn (Tím-Đất)</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Ảnh Hero</label>
+    <select onchange="applyHeroImage(this.value)">
+      <option value="forest">Rừng thông & Nhà</option>
+      <option value="tent">View từ trong lều</option>
+      <option value="bedroom">Phòng ngủ</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Cỡ chữ tiêu đề</label>
+    <input type="range" min="80" max="120" value="100"
+      oninput="document.documentElement.style.setProperty('--title-scale', this.value/100)">
+  </div>
+</div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "colorScheme": "warm",
+    "heroImage": "forest",
+    "titleScale": 100
+  }/*EDITMODE-END*/;
+
+  // NAV scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = target.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Tweaks
+  window.addEventListener('message', e => {
+    if (e.data?.type === '__activate_edit_mode') {
+      document.getElementById('tweaks-panel').style.display = 'block';
+    }
+    if (e.data?.type === '__deactivate_edit_mode') {
+      document.getElementById('tweaks-panel').style.display = 'none';
+    }
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+  function applyColorScheme(val) {
+    const root = document.documentElement;
+    if (val === 'forest') {
+      root.style.setProperty('--terra', 'oklch(40% 0.1 148)');
+      root.style.setProperty('--terra-light', 'oklch(72% 0.09 148)');
+      root.style.setProperty('--pine', 'oklch(28% 0.07 160)');
+    } else if (val === 'dusk') {
+      root.style.setProperty('--terra', 'oklch(48% 0.11 320)');
+      root.style.setProperty('--terra-light', 'oklch(76% 0.08 320)');
+      root.style.setProperty('--pine', 'oklch(28% 0.07 290)');
+    } else {
+      root.style.setProperty('--terra', 'oklch(54% 0.11 42)');
+      root.style.setProperty('--terra-light', 'oklch(78% 0.08 60)');
+      root.style.setProperty('--pine', 'oklch(32% 0.07 155)');
+    }
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { colorScheme: val } }, '*');
+  }
+
+  function applyHeroImage(val) {
+    const map = {
+      forest: "uploads/Căn nhà và rừng thông sát bên.png",
+      tent: "uploads/View từ trong lều nhìn ra ngoài.png",
+      bedroom: "uploads/Phòng ngủ.png"
+    };
+    document.querySelector('.hero-img').style.backgroundImage = `url('${map[val]}')`;
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { heroImage: val } }, '*');
+  }
+
+  // Apply defaults on load
+  applyColorScheme(TWEAK_DEFAULTS.colorScheme);
+  applyHeroImage(TWEAK_DEFAULTS.heroImage);
+</script>
+</body>
+</html>
