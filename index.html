@@ -73,7 +73,7 @@
   }
   .hero-img {
     position: absolute; inset: 0;
-    background: url('uploads/Căn nhà và rừng thông sát bên.png') center/cover no-repeat;
+    background: url('uploads/forest-house.png') center/cover no-repeat;
   }
   .hero-img::after {
     content: '';
@@ -515,7 +515,7 @@
   <div class="container">
     <div class="intro-grid">
       <div class="intro-image">
-        <img src="uploads/View từ trong lều nhìn ra ngoài.png" alt="View từ trong lều nhìn ra ngoài" loading="lazy">
+        <img src="uploads/tent-view.png" alt="View từ trong lều nhìn ra ngoài" loading="lazy">
         <div class="intro-image-accent"></div>
       </div>
       <div class="intro-text">
@@ -544,19 +544,19 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item gi-1" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="uploads/Phòng ngủ.png" alt="Phòng ngủ" loading="lazy">
+      <img src="uploads/bedroom.png" alt="Phòng ngủ" loading="lazy">
     </div>
     <div class="gallery-item gi-2" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="uploads/bàn phòng ngủ.png" alt="Bàn phòng ngủ" loading="lazy">
+      <img src="uploads/bedroom-desk.png" alt="Bàn phòng ngủ" loading="lazy">
     </div>
     <div class="gallery-item gi-3" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="uploads/Ghế sofa.png" alt="Ghế sofa" loading="lazy">
+      <img src="uploads/sofa.png" alt="Ghế sofa" loading="lazy">
     </div>
     <div class="gallery-item gi-4" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="uploads/Bếp.png" alt="Bếp" loading="lazy">
+      <img src="uploads/kitchen.png" alt="Bếp" loading="lazy">
     </div>
     <div class="gallery-item gi-5" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="uploads/Phí ngoài lều.png" alt="Khu lều" loading="lazy">
+      <img src="uploads/tent-exterior.png" alt="Khu lều" loading="lazy">
     </div>
   </div>
 </div>
@@ -569,7 +569,7 @@
     <div class="spaces-grid">
       <div class="space-card">
         <div class="space-card-img">
-          <img src="uploads/Phòng ngủ.png" alt="Phòng ngủ" loading="lazy">
+          <img src="uploads/bedroom.png" alt="Phòng ngủ" loading="lazy">
         </div>
         <div class="space-card-body">
           <div class="space-card-title">Phòng ngủ trong nhà</div>
@@ -579,7 +579,7 @@
       </div>
       <div class="space-card">
         <div class="space-card-img">
-          <img src="uploads/View từ trong lều nhìn ra ngoài.png" alt="View từ lều" loading="lazy">
+          <img src="uploads/tent-view.png" alt="View từ lều" loading="lazy">
         </div>
         <div class="space-card-body">
           <div class="space-card-title">Lều ngoài trời</div>
@@ -589,7 +589,7 @@
       </div>
       <div class="space-card">
         <div class="space-card-img">
-          <img src="uploads/Ghế sofa.png" alt="Phòng chung" loading="lazy">
+          <img src="uploads/sofa.png" alt="Phòng chung" loading="lazy">
         </div>
         <div class="space-card-body">
           <div class="space-card-title">Phòng chung & Bếp</div>
@@ -625,11 +625,11 @@
       </div>
       <div>
         <div class="amenity-img">
-          <img src="uploads/Bếp.png" alt="Bếp" loading="lazy">
+          <img src="uploads/kitchen.png" alt="Bếp" loading="lazy">
         </div>
         <div style="margin-top:8px;">
           <div class="amenity-img" style="aspect-ratio:16/9;">
-            <img src="uploads/Căn nhà và rừng thông sát bên.png" alt="Rừng thông" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="uploads/forest-house.png" alt="Rừng thông" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -861,9 +861,9 @@
 
   function applyHeroImage(val) {
     const map = {
-      forest: "uploads/Căn nhà và rừng thông sát bên.png",
-      tent: "uploads/View từ trong lều nhìn ra ngoài.png",
-      bedroom: "uploads/Phòng ngủ.png"
+      forest: "uploads/forest-house.png",
+      tent: "uploads/tent-view.png",
+      bedroom: "uploads/bedroom.png"
     };
     document.querySelector('.hero-img').style.backgroundImage = `url('${map[val]}')`;
     window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { heroImage: val } }, '*');
